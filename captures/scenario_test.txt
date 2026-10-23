@@ -1,0 +1,12 @@
+Accès direct à /admin/products sans login -> http://localhost:4200/login
+Mauvais mot de passe -> Identifiant ou mot de passe incorrect
+Login admin -> http://localhost:4200/admin/home
+Page 1 : Computer, Printer, Smart Phone, Smart Watch
+Page 3 : Tablet, Webcam, External Disk, Smart TV
+Recherche "smart" : Smart Phone, Smart Watch, Smart TV
+Nouveau produit -> Produit "Smart Speaker" enregistré (id fMZY0Ul)
+Après mise à jour : fMZY0Ul | Smart Speaker | 699.00 | 
+Après suppression, résultats "speaker" : 0
+user1 : colonnes = ID, Nom, Prix, Coché ; lien New Product visible = 0
+user1 -> /admin/newProduct en rechargeant la page : retour à /login (l'état d'authentification est en mémoire)
+user1 -> navigation interne vers /admin/newProduct : http://localhost:4200/admin/notAuthorized
