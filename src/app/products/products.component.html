@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <span>Liste des produits</span>
+    <span class="badge text-bg-info">{{ appState.productsState.totalProducts }} produit(s)</span>
+  </div>
+  <div class="card-body">
+    <form class="row g-2 mb-3" (ngSubmit)="newSearch()">
+      <div class="col-auto">
+        <input class="form-control" name="keyword" placeholder="Mot clé" [(ngModel)]="appState.productsState.keyword">
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i> Chercher</button>
+      </div>
+    </form>
+    @if (appState.productsState.status === 'ERROR') {
+      <div class="alert alert-danger">{{ appState.productsState.errorMessage }}</div>
+    }
+    <table class="table table-hover align-middle">
+      <thead><tr><th>ID</th><th>Nom</th><th>Prix</th><th>Coché</th>
+        @if (appState.hasRole('ADMIN')) { <th colspan="2">Actions</th> }</tr></thead>
+      <tbody>
+        @for (p of appState.productsState.products; track p.id) {
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price | number:'1.2-2' }}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-success" (click)="handleCheckProduct(p)">
+                <i [class]="p.checked ? 'bi bi-check-circle-fill' : 'bi bi-circle'"></i>
+              </button>
+            </td>
+            @if (appState.hasRole('ADMIN')) {
+              <td><button class="btn btn-sm btn-outline-primary" (click)="handleEdit(p)"><i class="bi bi-pencil"></i></button></td>
+              <td><button class="btn btn-sm btn-outline-danger" (click)="handleDelete(p)"><i class="bi bi-trash"></i></button></td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+    <ul class="nav nav-pills">
+      @for (page of pages(); track page) {
+        <li class="me-1">
+          <button (click)="handleGotoPage(page)"
+                  [class]="page === appState.productsState.currentPage ? 'btn btn-info' : 'btn btn-outline-info'">{{ page }}</button>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
