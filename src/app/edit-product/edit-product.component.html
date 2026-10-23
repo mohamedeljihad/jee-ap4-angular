@@ -1,0 +1,25 @@
+<div class="col-md-6 offset-md-3">
+  <div class="card">
+    <div class="card-header">Modifier le produit {{ productId }}</div>
+    <div class="card-body">
+      @if (productForm) {
+        <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+          <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input class="form-control" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Prix</label>
+            <input class="form-control" type="number" formControlName="price">
+            @if (productForm.controls['price'].invalid) { <small class="text-danger">Prix minimum : 100</small> }
+          </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" formControlName="checked" id="checked">
+            <label class="form-check-label" for="checked">Coché</label>
+          </div>
+          <button class="btn btn-success" [disabled]="productForm.invalid"><i class="bi bi-save"></i> Mettre à jour</button>
+        </form>
+      }
+    </div>
+  </div>
+</div>
