@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary px-3">
+  <span class="navbar-brand"><i class="bi bi-box-seam"></i> Angular Products</span>
+  <ul class="navbar-nav me-auto">
+    @for (a of actions; track a.route) {
+      @if (!a.role || appState.hasRole(a.role)) {
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="a.route" routerLinkActive="active">
+            <i class="bi bi-{{a.icon}}"></i> {{ a.title }}</a>
+        </li>
+      }
+    }
+  </ul>
+  @if (appState.productsState.status === 'LOADING') {
+    <div class="spinner-border spinner-border-sm text-light me-3" role="status"></div>
+  }
+  <div class="dropdown">
+    <button class="btn btn-outline-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+      <i class="bi bi-person-circle"></i> {{ appState.authState.username }}
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><span class="dropdown-item-text small text-muted">{{ appState.authState.roles.join(', ') }}</span></li>
+      <li><button class="dropdown-item" (click)="logout()"><i class="bi bi-box-arrow-right"></i> Logout</button></li>
+    </ul>
+  </div>
+</nav>
