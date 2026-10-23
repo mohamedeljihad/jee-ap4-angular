@@ -1,0 +1,20 @@
+{
+  "products": [
+    { "id": "1", "name": "Computer", "price": 4300, "checked": false },
+    { "id": "2", "name": "Printer", "price": 1200, "checked": true },
+    { "id": "3", "name": "Smart Phone", "price": 3200, "checked": true },
+    { "id": "4", "name": "Smart Watch", "price": 1500, "checked": false },
+    { "id": "5", "name": "Keyboard", "price": 250, "checked": false },
+    { "id": "6", "name": "Mouse", "price": 120, "checked": true },
+    { "id": "7", "name": "Monitor 27", "price": 2900, "checked": false },
+    { "id": "8", "name": "Headset", "price": 450, "checked": false },
+    { "id": "9", "name": "Tablet", "price": 2700, "checked": true },
+    { "id": "10", "name": "Webcam", "price": 380, "checked": false },
+    { "id": "11", "name": "External Disk", "price": 900, "checked": false },
+    { "id": "12", "name": "Smart TV", "price": 6500, "checked": false }
+  ],
+  "users": [
+    { "id": "1", "username": "admin", "password": "1234", "roles": ["USER", "ADMIN"] },
+    { "id": "2", "username": "user1", "password": "1234", "roles": ["USER"] }
+  ]
+}
