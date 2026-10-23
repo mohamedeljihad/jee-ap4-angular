@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-4 offset-md-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white"><i class="bi bi-lock"></i> Authentification</div>
+        <div class="card-body">
+          @if (errorMessage) { <div class="alert alert-danger">{{ errorMessage }}</div> }
+          <form [formGroup]="formLogin" (ngSubmit)="handleLogin()">
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input class="form-control" formControlName="username">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input class="form-control" type="password" formControlName="password">
+            </div>
+            <button class="btn btn-primary w-100" [disabled]="formLogin.invalid">Login</button>
+          </form>
+          <p class="small text-muted mt-3 mb-0">Comptes de test : admin / 1234 (ADMIN), user1 / 1234 (USER)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
