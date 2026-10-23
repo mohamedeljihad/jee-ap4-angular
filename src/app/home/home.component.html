@@ -1,0 +1,18 @@
+<div class="p-4 bg-light rounded-3 mb-3">
+  <h3>Bienvenue {{ appState.authState.username }}</h3>
+  <p class="mb-0 text-muted">Application Angular de gestion de produits (Activité pratique 4).</p>
+</div>
+<div class="row g-3">
+  <div class="col-md-4">
+    <div class="card text-bg-primary"><div class="card-body">
+      <h6>Produits</h6><h2>{{ total }}</h2></div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-bg-success"><div class="card-body">
+      <h6>Produits cochés</h6><h2>{{ checked }}</h2></div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-bg-secondary"><div class="card-body">
+      <h6>Rôles</h6><h4>{{ appState.authState.roles.join(' / ') }}</h4></div></div>
+  </div>
+</div>
