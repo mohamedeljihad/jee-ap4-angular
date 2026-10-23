@@ -1,0 +1,29 @@
+<div class="col-md-6 offset-md-3">
+  <div class="card">
+    <div class="card-header">Nouveau produit</div>
+    <div class="card-body">
+      @if (message) { <div class="alert alert-success">{{ message }}</div> }
+      <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+        <div class="mb-3">
+          <label class="form-label">Nom</label>
+          <input class="form-control" formControlName="name">
+          @if (productForm.controls['name'].touched && productForm.controls['name'].invalid) {
+            <small class="text-danger">Nom obligatoire (3 caractères minimum)</small>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Prix</label>
+          <input class="form-control" type="number" formControlName="price">
+          @if (productForm.controls['price'].invalid) {
+            <small class="text-danger">Prix minimum : 100</small>
+          }
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" formControlName="checked" id="checked">
+          <label class="form-check-label" for="checked">Coché</label>
+        </div>
+        <button class="btn btn-primary" [disabled]="productForm.invalid"><i class="bi bi-save"></i> Enregistrer</button>
+      </form>
+    </div>
+  </div>
+</div>
